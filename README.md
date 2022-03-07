@@ -2,6 +2,27 @@
 
 ![Teaser](/documentation/image/teaser.gif)
 
+## How to use it on Discord ?
+
+The code requires Python 3.9. You can use an Anaconda environment. You can download [this specific version](https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh).
+
+Then, install `v4l2loopback`. You can now create dummy video devices using:
+```bash
+sudo modprobe v4l2loopback devices=2 video_nr=9,10 card_label="OBS Cam","RobustBackground" exclusive_caps=1
+```
+
+Finally, install dependencies:
+```bash
+pip3 install requirements_inference.txt
+```
+
+And then:
+```bash
+./run.sh
+```
+
+
+
 <p align="center">English | <a href="README_zh_Hans.md">中文</a></p>
 
 Official repository for the paper [Robust High-Resolution Video Matting with Temporal Guidance](https://peterl1n.github.io/RobustVideoMatting/). RVM is specifically designed for robust human video matting. Unlike existing neural models that process frames as independent images, RVM uses a recurrent neural network to process videos with temporal memory. RVM can perform matting in real-time on any videos without additional inputs. It achieves **4K 76FPS** and **HD 104FPS** on an Nvidia GTX 1080 Ti GPU. The project was developed at [ByteDance Inc.](https://www.bytedance.com/)
